@@ -5716,10 +5716,6 @@ stringstream@~0.0.4:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.5.tgz#4e484cd4de5a0bbbee18e46307710a8a81621878"
 
-strip-and-shape-phone@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/strip-and-shape-phone/-/strip-and-shape-phone-1.0.2.tgz#4605de1dc27658e2ce845d5eb4386c923ca2338c"
-
 strip-ansi@3.0.1, strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
