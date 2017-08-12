@@ -22,17 +22,15 @@ class App extends Component {
 
 
   stripAndShapePhone = (phoneNumber) => {
-    let formattedNumber = phoneNumber.replace(/[^0-9]/g, ''); // Strip all non-numeric characters out of the string.
+    let formattedNumber = phoneNumber.replace(/[^0-9]/g, '');
 
     if (formattedNumber[0] === '1') {
-      // If the first character of the incoming phoneNumber is '1', preface the formattedNumber with '+'.
       formattedNumber = `+${formattedNumber}`;
     } else {
-      // Else, preface the string with '+1'.
       formattedNumber = `+1${formattedNumber}`;
     }
 
-    return formattedNumber; // Return the newly formattedNumber.
+    return formattedNumber;
   }
 
   handleSubmit = () => {
@@ -51,7 +49,8 @@ class App extends Component {
         <div className="App-header">
           <h2>Welcome to Number Facts</h2>
           <p>Enter your phone number below and receive a text message every morning with a random trivia fact.</p>
-          <p>At this time, registration is permanent. </p>
+          <p>At this time, registration is permanent.</p>
+          <p>To have your number removed, contact blake.guilloud@gmail.com</p>
         </div>
         <p className="App-intro">
           <div>
