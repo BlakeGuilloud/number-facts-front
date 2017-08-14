@@ -6,12 +6,19 @@ class App extends Component {
   static initialState = {
     number: '',
     name: '',
+    errorFeedback: false,
   };
 
-  state = App.initialState;
+  state = {
+    ...App.initialState,
+    successFeedback: false,
+  };
 
   resetState = () => {
-    this.setState(App.initialState);
+    this.setState({
+      ...App.initialState,
+      successFeedback: true,
+    });
   }
 
   handleChange = (name, value) => {
@@ -19,7 +26,6 @@ class App extends Component {
       [name]: value,
     });
   }
-
 
   stripAndShapePhone = (phoneNumber) => {
     let formattedNumber = phoneNumber.replace(/[^0-9]/g, '');
@@ -33,17 +39,35 @@ class App extends Component {
     return formattedNumber;
   }
 
-  handleSubmit = () => {
-    const payload = {
-      name: this.state.name,
-      number: this.stripAndShapePhone(this.state.number),
-    };
+  handleSubmit = (e) => {
+    e.preventDefault();
 
-    Actions.register(payload)
-      .then(this.resetState);
+    if (!this.state.name || !this.state.number) {
+      this.setState({
+        errorFeedback: true,
+        successFeedback: false,
+      });
+    } else {
+      const payload = {
+        name: this.state.name,
+        number: this.stripAndShapePhone(this.state.number),
+      };
+  
+      Actions.register(payload)
+        .then(this.resetState);
+    }
   }
 
   render() {
+    const renderAlertSuccess = () => this.state.successFeedback &&
+      <div className="alert alert-success" role="alert">
+        Thanks for subscribing!
+      </div>;
+    const renderAlertError = () => this.state.errorFeedback &&
+      <div className="alert alert-danger" role="alert">
+        Please fill out both fields.
+      </div>;
+
     return (
       <div className="App">
         <div className="App-header">
@@ -53,23 +77,25 @@ class App extends Component {
         </div>
         <div className="App-content">
           <form className="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1">
-            <div className="form-group">
-              <input
-                className="form-control"
-                value={this.state.number}
-                placeholder="Your Number"
-                onChange={(e) => this.handleChange('number', e.currentTarget.value)}
-              />
-            </div>
+            {renderAlertSuccess()}
+            {renderAlertError()}
             <div className="form-group">
               <input
                 className="form-control"
                 value={this.state.name}
-                placeholder="Your Name"
-                onChange={(e) => this.handleChange('name', e.currentTarget.value)}
+                placeholder="Name"
+                onChange={e => this.handleChange('name', e.currentTarget.value)}
               />
             </div>
-            <button type="submit" className="btn btn-primary btn-block">
+            <div className="form-group">
+              <input
+                className="form-control"
+                value={this.state.number}
+                placeholder="Number"
+                onChange={e => this.handleChange('number', e.currentTarget.value)}
+              />
+            </div>
+            <button onClick={this.handleSubmit} type="submit" className="btn btn-primary btn-block">
               Register
             </button>
           </form>

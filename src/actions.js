@@ -7,8 +7,8 @@ export function register(data) {
     method: 'post',
     url: API_URL,
     data,
-  }
-  console.log('payload : ', payload);
+  };
+
   return axios(payload)
     .then(console.log)
     .catch(console.error);
