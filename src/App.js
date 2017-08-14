@@ -49,28 +49,29 @@ class App extends Component {
         <div className="App-header">
           <h2>Welcome to Number Facts</h2>
           <p>Enter your phone number below and receive a text message every morning with a random trivia fact.</p>
-          <p>At this time, registration is permanent.</p>
           <p>To have your number removed, contact blake.guilloud@gmail.com</p>
         </div>
-        <p className="App-intro">
-          <div>
+        <form className="col-md-4 col-md-offset-4">
+          <div className="form-group">
             <input
-              value={this.state.name}
-              placeholder="Your Name"
-              onChange={(e) => this.handleChange('name', e.currentTarget.value)}
-            />
-          </div>
-          <div>
-            <input
+              className="form-control"
               value={this.state.number}
               placeholder="Your Number"
               onChange={(e) => this.handleChange('number', e.currentTarget.value)}
             />
           </div>
-          <button onClick={this.handleSubmit}>
+          <div className="form-group">
+            <input
+              className="form-control"
+              value={this.state.name}
+              placeholder="Your Name"
+              onChange={(e) => this.handleChange('name', e.currentTarget.value)}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary btn-block">
             Register
           </button>
-        </p>
+        </form>
       </div>
     );
   }
