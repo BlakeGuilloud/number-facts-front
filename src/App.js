@@ -51,27 +51,32 @@ class App extends Component {
           <p>Enter your phone number below and receive a text message every morning with a random trivia fact.</p>
           <p>To have your number removed, contact blake.guilloud@gmail.com</p>
         </div>
-        <form className="col-md-4 col-md-offset-4">
-          <div className="form-group">
-            <input
-              className="form-control"
-              value={this.state.number}
-              placeholder="Your Number"
-              onChange={(e) => this.handleChange('number', e.currentTarget.value)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              value={this.state.name}
-              placeholder="Your Name"
-              onChange={(e) => this.handleChange('name', e.currentTarget.value)}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary btn-block">
-            Register
-          </button>
-        </form>
+        <div className="App-content">
+          <form className="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1">
+            <div className="form-group">
+              <input
+                className="form-control"
+                value={this.state.number}
+                placeholder="Your Number"
+                onChange={(e) => this.handleChange('number', e.currentTarget.value)}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                value={this.state.name}
+                placeholder="Your Name"
+                onChange={(e) => this.handleChange('name', e.currentTarget.value)}
+              />
+            </div>
+            <button type="submit" className="btn btn-primary btn-block">
+              Register
+            </button>
+          </form>
+        </div>
+        <div className="App-footer">
+          F. Blake Guilloud | 2017
+        </div>
       </div>
     );
   }

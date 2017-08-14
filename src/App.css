@@ -1,14 +1,35 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
+.App-header {
+  min-height: 30vh;
+}
+
+.App-content {
+  min-height: 60vh;
+  border-bottom: 1px solid white;
+}
+
 
 form {
   margin-top: 20px;
   padding: 40px;
   border: 1px solid white;
   border-radius: 10px;
+  flex: 1;
 }
 
 button {
   color: #2b3e50;
+}
+
+.App-footer {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
